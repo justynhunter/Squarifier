@@ -3,11 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Squarifier.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class ImageMagickSquarifierTests
     {
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
     }
 }
