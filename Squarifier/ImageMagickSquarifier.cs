@@ -5,12 +5,12 @@ namespace Squarifier
 {
   public class ImageMagickSquarifier : ISquarifier
   {
-    public byte[] Squarify(byte[] image, Color backgroundColor)
+    public byte[] Squarify(byte[] image, Color backgroundColor, double borderSizeFactor = 0.05)
     {
-      return Squarify(image, backgroundColor, MagickFormat.Jpeg);
+      return Squarify(image, backgroundColor, borderSizeFactor, MagickFormat.Jpeg);
     }
     
-    public byte[] Squarify(byte[] image, Color backgroundColor, MagickFormat format)
+    public byte[] Squarify(byte[] image, Color backgroundColor, double borderSizeFactor, MagickFormat format)
     {
       using (var magickImage = new MagickImage(image))
       {
@@ -19,12 +19,12 @@ namespace Squarifier
 
         if (magickImage.Width > magickImage.Height)
         {
-          width = (int)(magickImage.Width * 0.05);
+          width = (int)(magickImage.Width * borderSizeFactor);
           height = (2 * width + magickImage.Width - magickImage.Height) / 2;
         }
         else
         {
-          height = (int)(magickImage.Height * 0.05);
+          height = (int)(magickImage.Height * borderSizeFactor);
           width = (2 * height + magickImage.Height - magickImage.Width) / 2;
         }
 

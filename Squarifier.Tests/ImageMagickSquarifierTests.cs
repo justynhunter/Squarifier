@@ -9,13 +9,13 @@ namespace Squarifier.Tests
     public class ImageMagickSquarifierTests
     {
       [TestMethod]
-      [DataRow(100, 50, 110, DisplayName = "Small Landscape Image")]
-      [DataRow(50, 100, 110, DisplayName = "Small Portrait Image")]
-      [DataRow(680, 480, 748, DisplayName = "Medium Landscape Image")]
-      [DataRow(515, 765, 841, DisplayName = "Medium Portrait Image")]
-      [DataRow(2435, 1677, 2677, DisplayName = "Large Landscape Image")]
-      [DataRow(1150, 3222, 3544, DisplayName = "Large Portrait Image")]
-      public void SquarifyTest(int width, int height, int expectedSideLength)
+      [DataRow(100, 50, 0.05, 110, DisplayName = "Small Landscape Image")]
+      [DataRow(50, 100, 0.05, 110, DisplayName = "Small Portrait Image")]
+      [DataRow(680, 480, 0.05, 748, DisplayName = "Medium Landscape Image")]
+      [DataRow(515, 765, 0.05, 841, DisplayName = "Medium Portrait Image")]
+      [DataRow(2435, 1677, 0.05, 2677, DisplayName = "Large Landscape Image")]
+      [DataRow(1150, 3222, 0.05, 3544, DisplayName = "Large Portrait Image")]
+      public void SquarifyTest(int width, int height, double borderSizeFactor, int expectedSideLength)
       {
         byte[] squareImage = null;
         var squarifier = new ImageMagickSquarifier();
@@ -24,7 +24,7 @@ namespace Squarifier.Tests
         {
           image.Format = MagickFormat.Jpeg;
           var imageBytes = image.ToByteArray();
-          squareImage = squarifier.Squarify(imageBytes, Color.White);
+          squareImage = squarifier.Squarify(imageBytes, Color.White, borderSizeFactor);
         }
         Assert.IsNotNull(squareImage);
         

@@ -5,6 +5,6 @@ namespace Squarifier
 {
   public interface ISquarifier
   {
-    byte[] Squarify(byte[] image, Color backgroundColor);
+    byte[] Squarify(byte[] image, Color backgroundColor, double borderSizeFactor);
   }
 }
