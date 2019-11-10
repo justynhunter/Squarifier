@@ -1,3 +1,4 @@
+using System;
 using System.Drawing;
 using ImageMagick;
 
@@ -19,13 +20,13 @@ namespace Squarifier
 
         if (magickImage.Width > magickImage.Height)
         {
-          width = (int)(magickImage.Width * borderSizeFactor);
-          height = (2 * width + magickImage.Width - magickImage.Height) / 2;
+          width = GetLongSide(magickImage.Width, borderSizeFactor);
+          height = GetShortSide(magickImage.Height, magickImage.Width, width);
         }
         else
         {
-          height = (int)(magickImage.Height * borderSizeFactor);
-          width = (2 * height + magickImage.Height - magickImage.Width) / 2;
+          height = GetLongSide(magickImage.Height, borderSizeFactor);
+          width = GetShortSide(magickImage.Width, magickImage.Height, height);
         }
 
         magickImage.Border(width, height);
@@ -34,6 +35,18 @@ namespace Squarifier
 
         return magickImage.ToByteArray();
       }
+    }
+
+    private int GetLongSide(int length, double factor)
+    {
+      var border = (length * factor);
+      return Convert.ToInt32(border);
+    }
+
+    private int GetShortSide(int length, int longSideLength, int longSideLengthWithBorder)
+    {
+      var border = (2 * longSideLengthWithBorder + longSideLength - length) / 2;
+      return Convert.ToInt32(border);
     }
   }
 }
