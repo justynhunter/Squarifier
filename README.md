@@ -1,7 +1,7 @@
 # Squarifier
 
 ## Usage
-Pass byte array of image into Squarify method with background color and format to output
+Pass byte array of image into Squarify method with background color and format to output (optional)
 
 e.g.
 ``` c#
