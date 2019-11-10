@@ -10,11 +10,11 @@ namespace Squarifier.Tests
     {
       [TestMethod]
       [DataRow(100, 50, 0.05, 110, DisplayName = "Small Landscape Image")]
-      [DataRow(50, 100, 0.05, 110, DisplayName = "Small Portrait Image")]
-      [DataRow(680, 480, 0.05, 748, DisplayName = "Medium Landscape Image")]
-      [DataRow(515, 765, 0.05, 841, DisplayName = "Medium Portrait Image")]
-      [DataRow(2435, 1677, 0.05, 2677, DisplayName = "Large Landscape Image")]
-      [DataRow(1150, 3222, 0.05, 3544, DisplayName = "Large Portrait Image")]
+      [DataRow(50, 100, 0.075, 116, DisplayName = "Small Portrait Image")]
+      [DataRow(680, 480, 0.1, 816, DisplayName = "Medium Landscape Image")]
+      [DataRow(515, 765, 0.08, 887, DisplayName = "Medium Portrait Image")]
+      [DataRow(2435, 1677, 0.025, 2557, DisplayName = "Large Landscape Image")]
+      [DataRow(1150, 3222, 0.25, 4834, DisplayName = "Large Portrait Image")]
       public void SquarifyTest(int width, int height, double borderSizeFactor, int expectedSideLength)
       {
         byte[] squareImage = null;
